@@ -21,19 +21,19 @@ jobs:
 
       # 2. Lakukan 10 commit unik secara berurutan dan push sekaligus
       - name: Make 10 commits and Push
+        env:
+          COMMIT_NAME: ${{ secrets.MY_NAME }}
+          COMMIT_EMAIL: ${{ secrets.MY_EMAIL }}
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "$COMMIT_NAME"
+          git config --global user.email "$COMMIT_EMAIL"
           
           for i in {1..10}
           do
-            # Update file dengan timestamp dan nomor urut commit
             echo "Update terakhir: $(date) - commit ke-$i" > last-update.txt
             git add last-update.txt
             git commit -m "chore: auto update part $i [skip ci]"
-            # Jeda singkat agar timestamp commit berbeda
             sleep 1
           done
           
-          # Push semua commit ke remote repository
           git push origin HEAD
