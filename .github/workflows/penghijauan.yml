@@ -2,8 +2,8 @@ name: Auto Commit
 
 on:
   schedule:
-    # Setiap hari jam 00:00 UTC (atur sesuai kebutuhan)
-    - cron: "0 0 * * *"
+    # Berjalan setiap 30 menit (bisa disesuaikan, misal "*/15 * * * *" untuk 15 menit)
+    - cron: "*/30 * * * *"
   workflow_dispatch:   # Bisa dijalankan manual lewat tab Actions
 
 jobs:
@@ -19,16 +19,21 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # 2. Lakukan perubahan / generate file (contoh: update timestamp)
-      - name: Make changes
+      # 2. Lakukan 10 commit unik secara berurutan dan push sekaligus
+      - name: Make 10 commits and Push
         run: |
-          echo "Update terakhir: $(date)" > last-update.txt
-
-      # 3. Commit & push otomatis
-      - name: Commit and Push Changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: auto update [skip ci]"
-          commit_user_name: "github-actions[bot]"
-          commit_user_email: "github-actions[bot]@users.noreply.github.com"
-          commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          for i in {1..10}
+          do
+            # Update file dengan timestamp dan nomor urut commit
+            echo "Update terakhir: $(date) - commit ke-$i" > last-update.txt
+            git add last-update.txt
+            git commit -m "chore: auto update part $i [skip ci]"
+            # Jeda singkat agar timestamp commit berbeda
+            sleep 1
+          done
+          
+          # Push semua commit ke remote repository
+          git push origin HEAD
