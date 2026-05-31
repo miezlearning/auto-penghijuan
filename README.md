@@ -7,13 +7,13 @@
 
 ---
 
-## 🤔 Ini Apaan?
+## 🤔 Ini Apaan
 
 Ini repo iseng buat otomatisasi **penghijauan** kontribusi GitHub biar keliatan rajin ngoding tiap hari. Daripada grafik kontribusi kosong melompong kayak dompet di akhir bulan, mending kita otomatisasi pake GitHub Actions biar ijonya langsung pekat!
 
 ---
 
-## ⚙️ Cara Kerja (Simple Aja)
+## ⚙️ Cara Kerja 
 
 Gak usah ribet, skemanya cuma gini doang:
 1. **Bangun:** Tiap 30 menit sekali, GitHub Actions otomatis jalan.
@@ -22,7 +22,7 @@ Gak usah ribet, skemanya cuma gini doang:
 
 ---
 
-## 🚀 Cara Edit Sesuka Hati
+## 🚀 Cara Edit 
 
 Buka file [.github/workflows/penghijauan.yml](file:///.github/workflows/penghijauan.yml) terus ganti bagian ini kalau mau eksperimen:
 
@@ -33,7 +33,7 @@ Buka file [.github/workflows/penghijauan.yml](file:///.github/workflows/penghija
 
 ---
 
-## ⚠️ Disclaimer Santai
+## ⚠️ Disclaimer
 
 > [!IMPORTANT]
 > Proyek ini cuma buat seru-seruan & estetika profil GitHub aja ya ges ya. Ingat, ngoding beneran, bikin project riil, dan belajar konsisten tetep yang paling utama. Jangan lupa sesekali jalan-jalan keluar buat hirup udara segar! 
